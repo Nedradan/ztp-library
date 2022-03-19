@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,9 +46,10 @@ public class UsersLoginServlet extends HttpServlet {
         try {
             String password = request.getParameter("Password");
             String login = request.getParameter("Username");
-            PrintWriter out = response.getWriter();
+
             if (checkUser(login, password)) {
-                out.println("Logowanie uzytkownika udane!");
+                HttpSession session = request.getSession();
+                session.setAttribute("loggedFlag", true);
                 response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();

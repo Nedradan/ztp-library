@@ -20,10 +20,10 @@ public class AdminLoginServlet extends HttpServlet {
         try {
             String password = request.getParameter("Password");
             String login = request.getParameter("Username");
-            PrintWriter out = response.getWriter();
 
             if (password.equals("admin")) {
-                out.println("Logowanie admina udane!");
+                HttpSession session = request.getSession();
+                session.setAttribute("loggedFlag", true);
                 response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();

@@ -30,7 +30,7 @@ public class DashboardServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<center><H1>Ksiazki</H1></center>");
-        out.println("<table style=>\n" +
+        out.println("<table>\n" +
                 "<tr>\n" +
                 "<th style=\"width:5%;\"><center>Tytul</center</th>\n" +
                 "<th style=\"width:5%;\"><center>Autor</center</th>\n" +
