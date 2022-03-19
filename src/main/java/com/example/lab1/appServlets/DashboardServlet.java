@@ -47,6 +47,8 @@ public class DashboardServlet extends HttpServlet {
                     out.println(book.toString());
                 }
                 out.println("</table>");
+                out.println("</br>");
+                out.println("</br>");
                 out.println("<center><button><a href=\"LogoutServlet\">Wyloguj!</a></button></ceneter>");
                 out.println("</body>");
                 out.println("</html>");

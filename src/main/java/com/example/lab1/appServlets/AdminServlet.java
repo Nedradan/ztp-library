@@ -42,12 +42,16 @@ public class AdminServlet extends HttpServlet {
                     out.println(book.toString());
                 }
                 out.println("</table>");
+                out.println("</br>");
+                out.println("</br>");
                 out.println("<table>\n" +
                         "<tr>\n" +
-                        "<th style=\"width:5%;\"><center><button><a href=\"AddBookServlet\">Dodaj nową ksiazke!</a></button></center>\n" +
-                        "<th style=\"width:5%;\"><center><button><a href=\"DeleteBookServlet\">Usun ksiazke!</a></button></center>\n" +
+                        "<th style=\"width:20%;\"><center><button><a href=\"AddBookServlet\">Dodaj nową ksiazke!</a></button></center>\n" +
+                        "<th style=\"width:20%;\"><center><button><a href=\"DeleteBookServlet\">Usun ksiazke!</a></button></center>\n" +
                         "</tr>\n");
                 out.println("</table>");
+                out.println("</br>");
+                out.println("</br>");
                 out.println("<center><button><a href=\"LogoutServlet\">Wyloguj!</a></button></center>");
                 out.println("</body>");
                 out.println("</html>");
