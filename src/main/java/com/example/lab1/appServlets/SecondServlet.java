@@ -1,4 +1,4 @@
-package com.example.lab1;
+package com.example.lab1.appServlets;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
