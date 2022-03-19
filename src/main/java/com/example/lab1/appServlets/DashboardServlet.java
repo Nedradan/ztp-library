@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "DashboradServlet", value = "/DashboradServlet")
-public class DashboradServlet extends HttpServlet {
+@WebServlet(name = "DashboardServlet", value = "/DashboardServlet")
+public class DashboardServlet extends HttpServlet {
 
     ArrayList<Book> books;
     @Override
