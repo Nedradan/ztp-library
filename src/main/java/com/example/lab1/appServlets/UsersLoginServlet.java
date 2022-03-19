@@ -48,7 +48,7 @@ public class UsersLoginServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             if (checkUser(login, password)) {
                 out.println("Logowanie uzytkownika udane!");
-                //response.sendRedirect("DashboardServlet");
+                response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();
             }

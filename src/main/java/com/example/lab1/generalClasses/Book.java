@@ -18,7 +18,8 @@ public class Book {
         this.year = 1999+number;
     }
 
-    public String showBook() {
+    @Override
+    public String toString() {
         return "<tr>\n" +
                 "   <td>"+title+"</th>\n" +
                 "   <td>"+author+"</th>\n" +
