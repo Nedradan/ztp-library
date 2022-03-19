@@ -23,7 +23,7 @@ public class AdminLoginServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
 
             if (password.equals("admin")) {
-                out.println("Logowanie admina udane");
+                out.println("Logowanie admina udane!");
                 //response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();
