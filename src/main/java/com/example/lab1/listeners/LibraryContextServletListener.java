@@ -1,0 +1,22 @@
+package com.example.lab1.listeners;
+
+import com.example.lab1.generalClasses.Book;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+
+import java.util.ArrayList;
+
+@WebListener
+public class LibraryContextServletListener implements ServletContextListener {
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        ArrayList<Book> books = new ArrayList<Book>();
+        for (int i=0;i<=10;i++){
+            Book bookPom= new Book(1);
+            books.add(bookPom);
+        }
+        sce.getServletContext().setAttribute("books", books);
+    }
+
+}

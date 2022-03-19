@@ -17,7 +17,7 @@ public class Book {
         this.author = "Autor"+String.valueOf(number);
         this.year = 1999+number;
     }
-    
+
     public String showBook() {
         return "<tr>\n" +
                 "   <td>"+title+"</th>\n" +
