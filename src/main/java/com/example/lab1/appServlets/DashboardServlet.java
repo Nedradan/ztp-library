@@ -36,8 +36,7 @@ public class DashboardServlet extends HttpServlet {
                 "<th style=\"width:5%;\"><center>Autor</center</th>\n" +
                 "<th style=\"width:5%;\"><center>Rok wydania</center></th>\n" +
                 "</tr>\n");
-        for (Book book:
-                books) {
+        for (Book book: books) {
             out.println(book.toString());
         }
         out.println("</table>");
