@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
+import javax.security.sasl.AuthenticationException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -16,16 +17,20 @@ public class AdminLoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String password = request.getParameter("Password");;
-        String login = request.getParameter("Username");;
-        PrintWriter out = response.getWriter();
-        out.println(login);
-        out.println(password);
+        try {
+            String password = request.getParameter("Password");
+            String login = request.getParameter("Username");
+            PrintWriter out = response.getWriter();
 
-        if(password.equals("admin")){
-            out.println("Logowanie admina udane");
-        } else {
-            out.println("Próba logowania nieudana");
+            if (password.equals("admin")) {
+                out.println("Logowanie admina udane");
+                //response.sendRedirect("DashboardServlet");
+            } else {
+                throw new AuthenticationException();
+            }
+        } catch(Exception e)
+        {
+            request.getRequestDispatcher("/loginFailed.html").forward(request, response);
         }
     }
 }

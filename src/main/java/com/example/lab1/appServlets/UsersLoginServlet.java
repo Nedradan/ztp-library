@@ -46,11 +46,9 @@ public class UsersLoginServlet extends HttpServlet {
             String password = request.getParameter("Password");
             String login = request.getParameter("Username");
             PrintWriter out = response.getWriter();
-            out.println(login);
-            out.println(password);
             if (checkUser(login, password)) {
                 out.println("Logowanie uzytkownika udane!");
-                response.sendRedirect("DashboardServlet");
+                //response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();
             }
