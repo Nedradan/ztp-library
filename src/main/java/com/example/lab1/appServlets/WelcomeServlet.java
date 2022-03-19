@@ -14,10 +14,14 @@ public class WelcomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try
         {
-
             boolean loggedFlag = (boolean) request.getSession().getAttribute("loggedFlag");
+            boolean adminFlag = (boolean) request.getSession().getAttribute("adminFlag");
             if(loggedFlag == true) {
-                request.getRequestDispatcher("DashboardServlet").forward(request, response);
+                if (adminFlag == true){
+                    response.sendRedirect("AdminServlet");
+                } else {
+                    response.sendRedirect("DashboardServlet");
+                }
             }
             else {
                 throw new AuthenticationException();

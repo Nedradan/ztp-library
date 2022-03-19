@@ -50,6 +50,7 @@ public class UsersLoginServlet extends HttpServlet {
             if (checkUser(login, password)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedFlag", true);
+                session.setAttribute("adminFlag", false);
                 response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();

@@ -24,6 +24,7 @@ public class AdminLoginServlet extends HttpServlet {
             if (password.equals("admin")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedFlag", true);
+                session.setAttribute("adminFlag", true);
                 response.sendRedirect("DashboardServlet");
             } else {
                 throw new AuthenticationException();

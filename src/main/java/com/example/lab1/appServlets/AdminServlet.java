@@ -9,25 +9,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "DashboardServlet", value = "/DashboardServlet")
-public class DashboardServlet extends HttpServlet {
-
+@WebServlet(name = "AdminServlet", value = "/AdminServlet")
+public class AdminServlet extends HttpServlet {
     ArrayList<Book> books;
-
     @Override
     public void init() throws ServletException {
         ServletContext context = getServletContext();
         books = (ArrayList<Book>) context.getAttribute("books");
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
+        try {
             boolean loggedFlag = (boolean) request.getSession().getAttribute("loggedFlag");
             boolean adminFlag = (boolean) request.getSession().getAttribute("adminFlag");
             if (loggedFlag && adminFlag) {
-                response.sendRedirect("WelcomeServlet");
-            } else {
                 PrintWriter out = response.getWriter();
                 out.println("<!DOCTYPE html>");
                 out.println("<html lang=\"en\">");
@@ -47,14 +42,22 @@ public class DashboardServlet extends HttpServlet {
                     out.println(book.toString());
                 }
                 out.println("</table>");
-                out.println("<center><button><a href=\"LogoutServlet\">Wyloguj!</a></button></ceneter>");
+                out.println("<table>\n" +
+                        "<tr>\n" +
+                        "<th style=\"width:5%;\"><center><button><a href=\"AddBookServlet\">Dodaj nową ksiazke!</a></button></center>\n" +
+                        "<th style=\"width:5%;\"><center><button><a href=\"DeleteBookServlet\">Usun ksiazke!</a></button></center>\n" +
+                        "</tr>\n");
+                out.println("</table>");
+                out.println("<center><button><a href=\"LogoutServlet\">Wyloguj!</a></button></center>");
                 out.println("</body>");
                 out.println("</html>");
+            } else {
+                response.sendRedirect("WelcomeServlet");
             }
         } catch(Exception e){
             response.sendRedirect("LoginServlet");
         }
-}
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
