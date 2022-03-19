@@ -23,19 +23,19 @@ public class DashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
-        out.println("<html lang=\"pl\">");
+        out.println("<html lang=\"en\">");
         out.println("<head>");
         out.println("<meta charset=\"UTF-8\">");
-        out.println("<title>Ekran główny biblioteki</title>");
+        out.println("<title>Ekran glowny biblioteki</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<H1>Ksiązki</H1>");
-        out.println("<table>\n" +
-                "  <tr>\n" +
-                "    <th>Tytuł</th>\n" +
-                "    <th>Autor</th>\n" +
-                "    <th>Rok wydania</th>\n" +
-                "  </tr>\n");
+        out.println("<center><H1>Ksiazki</H1></center>");
+        out.println("<table style=>\n" +
+                "<tr>\n" +
+                "<th style=\"width:5%;\"><center>Tytul</center</th>\n" +
+                "<th style=\"width:5%;\"><center>Autor</center</th>\n" +
+                "<th style=\"width:5%;\"><center>Rok wydania</center></th>\n" +
+                "</tr>\n");
         for (Book book:
                 books) {
             out.println(book.toString());

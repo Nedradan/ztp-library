@@ -21,9 +21,9 @@ public class Book {
     @Override
     public String toString() {
         return "<tr>\n" +
-                "   <td>"+title+"</th>\n" +
-                "   <td>"+author+"</th>\n" +
-                "   <td>"+year+"</th>\n" +
+                "<td><center>"+title+"</center></td>\n" +
+                "<td><center>"+author+"</center></td>\n" +
+                "<td><center>"+year+"</center></td>\n" +
                 "</tr>\n";
     }
 }

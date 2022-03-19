@@ -13,7 +13,7 @@ public class LibraryContextServletListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ArrayList<Book> books = new ArrayList<Book>();
         for (int i=0;i<=10;i++){
-            Book bookPom= new Book(1);
+            Book bookPom= new Book(i);
             books.add(bookPom);
         }
         sce.getServletContext().setAttribute("books", books);
