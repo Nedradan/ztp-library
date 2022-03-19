@@ -9,5 +9,7 @@
 </h1>
 <br/>
 <a href="first-servlet">Pierwszy Servlet Janka</a>
+<br/>
+<a href="second-servlet?test_parameter=3">Drugi Servlet Janka</a>
 </body>
 </html>
