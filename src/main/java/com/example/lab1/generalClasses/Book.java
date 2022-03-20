@@ -18,6 +18,10 @@ public class Book {
         this.year = 1999+number;
     }
 
+    public String getBookTitle(){
+        return title;
+    }
+
     @Override
     public String toString() {
         return "<tr>\n" +

@@ -23,38 +23,58 @@ public class AdminServlet extends HttpServlet {
             boolean loggedFlag = (boolean) request.getSession().getAttribute("loggedFlag");
             boolean adminFlag = (boolean) request.getSession().getAttribute("adminFlag");
             if (loggedFlag && adminFlag) {
-                PrintWriter out = response.getWriter();
-                out.println("<!DOCTYPE html>");
-                out.println("<html lang=\"en\">");
-                out.println("<head>");
-                out.println("<meta charset=\"UTF-8\">");
-                out.println("<title>Ekran glowny biblioteki</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<center><H1>Ksiazki</H1></center>");
-                out.println("<table>\n" +
+                PrintWriter output = response.getWriter();
+                output.println("<!DOCTYPE html>");
+                output.println("<html lang=\"en\">");
+                output.println("<head>");
+                output.println("<meta charset=\"UTF-8\">");
+                output.println("<title>Ekran glowny biblioteki</title>");
+                output.println("</head>");
+                output.println("<body>");
+                output.println("<center><H1>Ksiazki</H1></center>");
+                output.println("<table>\n" +
                         "<tr>\n" +
                         "<th style=\"width:5%;\"><center>Tytul</center</th>\n" +
                         "<th style=\"width:5%;\"><center>Autor</center</th>\n" +
                         "<th style=\"width:5%;\"><center>Rok wydania</center></th>\n" +
                         "</tr>\n");
                 for (Book book : books) {
-                    out.println(book.toString());
+                    output.println(book.toString());
                 }
-                out.println("</table>");
-                out.println("</br>");
-                out.println("</br>");
-                out.println("<center><table>\n" +
+                output.println("</table>");
+                output.println("</br>");
+                output.println("</br>");
+                output.println("<center><table>\n" +
                         "<tr>\n" +
-                        "<th style=\"width:10%;\"><button><a href=\"AddBookServlet\">Dodaj nową ksiazke!</a></button>\n" +
-                        "<th style=\"width:10%;\"><button><a href=\"DeleteBookServlet\">Usun ksiazke!</a></button>\n" +
+                        "<th style=\"width:10%;\"><form action=\"RemoveBookServlet\" method=\"post\">\n" +
+                        "    <label for=\"Title\">Tytul:</label>\n" +
+                        "    <input type=\"text\" id=\"Title\" name=\"Title\">\n" +
+                        "    <input type=\"submit\" value=\"Usun ksiazke!\">\n" +
+                        "</form>\n" +
                         "</tr>\n");
-                out.println("</table></center>");
-                out.println("</br>");
-                out.println("</br>");
-                out.println("<center><button><a href=\"LogoutServlet\">Wyloguj!</a></button></center>");
-                out.println("</body>");
-                out.println("</html>");
+                output.println("</table></center>");
+                output.println("</br>" +
+                        "</br>" +
+                        "<center><table>\n" +
+                        "<th style=\"width:10%;\"><form action=\"AddBookServlet\" method=\"post\">\n" +
+                        "    <label for=\"addTitle\">Tytul:</label>\n" +
+                        "    <input type=\"text\" id=\"addTitle\" name=\"addTitle\">\n" +
+                        "    </br>" +
+                        "    <label for=\"addAuthor\">Autor:</label>\n" +
+                        "    <input type=\"text\" id=\"addAuthor\" name=\"addAuthor\">\n" +
+                        "    </br>" +
+                        "    <label for=\"addYear\">Rok liczbowo:</label>\n" +
+                        "    <input type=\"text\" id=\"addYear\" name=\"addYear\">\n" +
+                        "    </br>" +
+                        "    <input type=\"submit\" value=\"Dodaj ksiazke!\">\n" +
+                        "</form>\n" +
+                        "</tr>\n");
+                output.println("</table></center>");
+                output.println("</br>");
+                output.println("</br>");
+                output.println("<center><button><a href=\"LogoutServlet\">Wyloguj!</a></button></center>");
+                output.println("</body>");
+                output.println("</html>");
             } else {
                 response.sendRedirect("WelcomeServlet");
             }

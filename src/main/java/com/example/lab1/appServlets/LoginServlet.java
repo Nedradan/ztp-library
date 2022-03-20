@@ -19,10 +19,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login= request.getParameter("Username");
-        String password= request.getParameter("Password");
 
         RequestDispatcher loginDispatcher;
-        if (login.equals("admin")) {
+        if ("admin".equals(login)) {
             loginDispatcher = request.getRequestDispatcher("AdminLoginServlet");
         } else{
             loginDispatcher=request.getRequestDispatcher("UsersLoginServlet");
